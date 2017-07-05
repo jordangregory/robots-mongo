@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
+.firstUsersContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.user {
+  flex: 0 23%;
+  border: 1px solid black;
+  font-family: sans-serif;
+  margin: 5px;
+}
+
+.firstAvatar {
+  margin-left: 71px;
+}
+
+.firstName {
+  color: #467BCA;
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+.jobCompany {
+  margin-left: 10px;
+}
+
+.hire1 {
+  color: red;
+  margin-left: 10px;
+}
+
+/*BOTTOM SECTION*/
+
+.secondUserContainer {
+  font-family: sans-serif;
+  margin-top: 5rem;
+}
+
+.individualUsers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#avatarPic {
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.infoWrapper {
+  margin-left: 20px;
+}
+
+.schoolSkillsWrapper {
+  margin-left: 94px;
+  margin-bottom: 5rem;
+}
