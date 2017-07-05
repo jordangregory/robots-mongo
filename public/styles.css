@@ -18,7 +18,7 @@
 }
 
 .firstName {
-  color: #467BCA;
+  color: #467bca;
   font-size: 30px;
   margin-left: 10px;
 }
@@ -30,6 +30,12 @@
 .hire1 {
   color: red;
   margin-left: 10px;
+}
+
+.jobStatus {
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
 }
 
 /*BOTTOM SECTION*/

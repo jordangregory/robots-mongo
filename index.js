@@ -26,11 +26,32 @@ mongoClient.connect(dbUrl, function(err, db) {
 
 app.get("/robotUsers", (req, res) => {
   ROBOTDATA.find({}).toArray(function(err, foundRobots) {
+    console.log(foundRobots);
     if (err) {
       res.status(500).send(err);
     }
 
-    res.render("todo", { robotUsers: foundRobots[0].users });
+    res.render("todo", { robotUsers: foundRobots });
+  });
+});
+app.get("/employed", (req, res) => {
+  ROBOTDATA.find({ job: { $ne: null } }).toArray(function(err, foundRobots) {
+    console.log(foundRobots);
+    if (err) {
+      res.status(500).send(err);
+    }
+
+    res.render("todo", { robotUsers: foundRobots });
+  });
+});
+app.get("/unemployed", (req, res) => {
+  ROBOTDATA.find({ job: null }).toArray(function(err, foundRobots) {
+    console.log(foundRobots);
+    if (err) {
+      res.status(500).send(err);
+    }
+
+    res.render("todo", { robotUsers: foundRobots });
   });
 });
 
