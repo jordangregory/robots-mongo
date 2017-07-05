@@ -1,17 +1,41 @@
 const express = require("express");
-const data = require("./data.js");
-const port = 4000;
 const mustacheExpress = require("mustache-express");
+const dbUrl = "mongodb://localhost:27017/robots";
+const mongoClient = require("mongodb").MongoClient;
+const ObjectId = require("mongodb").ObjectID;
+const port = 4000;
 
 var app = express();
+
+let DB;
+let ROBOTDATA;
 
 app.use(express.static(__dirname + "/public"));
 app.engine("mustache", mustacheExpress());
 app.set("view engine", "mustache");
 app.set("views", "./views");
 
+mongoClient.connect(dbUrl, function(err, db) {
+  if (err) {
+    console.warn("Error connecting to database", err);
+  }
+
+  DB = db;
+  ROBOTDATA = db.collection("robotData");
+});
+
+app.get("/robotUsers", (req, res) => {
+  ROBOTDATA.find({}).toArray(function(err, foundRobots) {
+    if (err) {
+      res.status(500).send(err);
+    }
+
+    res.render("todo", { robotUsers: foundRobots[0].users });
+  });
+});
+
 app.get("/", function(req, res) {
-  res.render("todo", data);
+  res.render("todo");
 });
 
 app.listen(port, function() {
